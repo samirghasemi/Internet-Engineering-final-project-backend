@@ -1,5 +1,5 @@
 defmodule TorobBackend.Accounts.Guardian do
-    use Guardian, otp_app: :testJson
+    use Guardian, otp_app: :torob_backend
   
     alias TorobBackend.Accounts
 

@@ -1,3 +1,4 @@
+
 defmodule TorobBackendWeb.UserView do
   use TorobBackendWeb, :view
   alias TorobBackendWeb.UserView
@@ -14,8 +15,11 @@ defmodule TorobBackendWeb.UserView do
     %{
       id: user.id,
       username: user.username,
-      password: user.password,
-      email: user.email
+      email: user.email,
+      avatar: user.avatar
     }
+  end
+  def render("jwt.json", %{jwt: jwt}) do
+    %{jwt: jwt}
   end
 end

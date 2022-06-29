@@ -5,10 +5,13 @@ defmodule TorobBackend.Accounts.User do
   alias Pbkdf2
 
   schema "users" do
+    field :avatar, TorobBackend.UserProfile.Type
     field :email, :string
     field :password, :string
     field :username, :string
-    field :avatar, TorobBackend.UserProfile.Type
+    has_many :shops , TorobBackend.Stores.Shop
+
+
     timestamps()
   end
 
@@ -19,7 +22,9 @@ defmodule TorobBackend.Accounts.User do
     |> cast(attrs, [:username, :password , :email])
     |> cast_attachments(attrs,[:avatar])
     |> validate_required([:username, :password, :email])
-    |> unique_constraint(:username, :email)
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:username)
+    |> unique_constraint(:email)
     |> put_password_hash()
   end
 

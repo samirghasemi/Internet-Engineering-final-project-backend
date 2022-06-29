@@ -29,17 +29,17 @@ defmodule TorobBackend.UserProfile do
 
 
   # Override the storage directory:
-  def storage_dir(_version, {_file, scope}) do
-    "uploads/user/avatars/#{scope.id}"
+  def storage_dir(version, {file, scope}) do
+    "uploads/user/avatars/#{scope.username}"
   end
 
   def filename(version, {file, scope}) do
     file_name = Path.basename(file.file_name, Path.extname(file.file_name))
-    "#{scope.id}_#{version}_#{file_name}"
+    "#{scope.username}_#{version}_#{file_name}"
   end
 
   # Provide a default URL if there hasn't been a file uploaded
-  def default_url(_version) do
+  def default_url(version) do
     TorobBackendWeb.Endpoint.url <> "/uploads/user/default.png"
   end
 end

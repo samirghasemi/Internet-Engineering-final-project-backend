@@ -1,12 +1,29 @@
 defmodule TorobBackendWeb.Router do
   use TorobBackendWeb, :router
+  alias TorobBackend.Accounts.AuthPipeline
 
   pipeline :api do
     plug :accepts, ["json"]
   end
+  pipeline :jwt_authenticated do
+    plug AuthPipeline
+  end
 
   scope "/api", TorobBackendWeb do
     pipe_through :api
+    post "/sign_up", UserController, :create
+    post "/sign_in", UserController, :sign_in
+
+  end
+
+  scope "/api", TorobBackendWeb do
+    pipe_through [:api , :jwt_authenticated]
+
+    resources "/users" , UserController ,except: [:new , :edit , :create]
+    resources "/shops" , ShopController ,except: [:new , :edit ]
+#    resources "/reservations" , ReservationController ,except: [:new , :edit , :create ]
+#    post "/reservations/:id", ReservationController, :create
+
   end
 
   # Enables LiveDashboard only for development
@@ -32,9 +49,9 @@ defmodule TorobBackendWeb.Router do
   # node running the Phoenix server.
   if Mix.env() == :dev do
     scope "/dev" do
-      pipe_through [:fetch_session, :protect_from_forgery]
-
-      forward "/mailbox", Plug.Swoosh.MailboxPreview
+#      pipe_through [:fetch_session, :protect_from_forgery]
+#
+#      forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
 end
