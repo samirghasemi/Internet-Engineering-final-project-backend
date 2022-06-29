@@ -3,8 +3,8 @@ import Config
 # Configure your database
 config :torob_backend, TorobBackend.Repo,
   username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
+  password: "changeme",
+  hostname: "postgres.db.samirghasemi.ir",
   database: "torob_backend_dev",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

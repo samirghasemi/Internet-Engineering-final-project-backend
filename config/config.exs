@@ -17,6 +17,7 @@ config :torob_backend, TorobBackendWeb.Endpoint,
   pubsub_server: TorobBackend.PubSub,
   live_view: [signing_salt: "pngxpLd1"]
 
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
@@ -43,6 +44,10 @@ config :esbuild,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+config :torob_backend, TorobBackend.Accounts.Guardian,
+       issuer: "test",
+       secret_key: "EDzKyR0ZfL4Rsvsj33YbEIxY8soM0TH5JEsk1PTlR8SZ0y0a6kgGi2tmXfy1b2nN" # put the result of the mix command above here
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
