@@ -3,8 +3,38 @@ defmodule TorobBackendWeb.ShopController do
 
   alias TorobBackend.Stores
   alias TorobBackend.Stores.Shop
+  alias TorobBackend.Stores
 
   action_fallback TorobBackendWeb.FallbackController
+
+  plug :exists when action in [:edit, :update, :delete, :show]
+  plug :check_user when action in [:update, :edit, :delete]
+
+  def exists(%{params: %{"id" => shop_id}} = conn, _) do
+    shop_id = String.to_integer(shop_id)
+    shop = Stores.get_shop(shop_id)
+    if shop == nil do
+      conn
+      |> put_status(:not_found)
+      |> json(%{error: "this link is not exists!"})
+      |> halt()
+    else
+      conn
+    end
+  end
+
+  def check_user(%{params: %{"id" => shop_id}} = conn, _) do
+    shop_id = String.to_integer(shop_id)
+    shop = Stores.get_shop(shop_id)
+    if (shop.user_id == load_current_user(conn).id) do
+      conn
+    else
+      conn
+      |> put_status(:unauthorized)
+      |> json(%{error: "you can not see this!"})
+      |> halt()
+    end
+  end
 
   def load_current_user(conn) do
     Guardian.Plug.current_resource(conn)

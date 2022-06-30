@@ -30,20 +30,10 @@ defmodule TorobBackend.ShopProfile do
 
   # Override the storage directory:
   def storage_dir(version, {file, scope}) do
-    IO.puts(1)
-    IO.inspect(scope)
-    IO.inspect(version)
-    IO.puts(1)
-
     "uploads/shop/avatars/#{scope.name}"
   end
 
   def filename(version, {file, scope}) do
-    IO.puts(2)
-    IO.inspect(scope)
-    IO.inspect(version)
-    IO.puts(2)
-
     file_name = Path.basename(file.file_name, Path.extname(file.file_name))
     "#{scope.name}_#{version}_#{file_name}"
   end

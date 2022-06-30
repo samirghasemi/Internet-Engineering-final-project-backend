@@ -36,6 +36,7 @@ defmodule TorobBackend.Stores do
 
   """
   def get_shop!(id), do: Repo.get!(Shop, id)
+  def get_shop(id), do: Repo.get(Shop, id)
 
   @doc """
   Creates a shop.

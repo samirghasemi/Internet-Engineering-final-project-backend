@@ -19,6 +19,8 @@ defmodule TorobBackend.Stores.Shop do
     |> cast(attrs, [:name, :desc, :link])
     |> cast_attachments(attrs,[:avatar])
     |> validate_required([:name, :desc, :link])
+    |> unique_constraint(:name)
+
 
   end
 end
