@@ -37,4 +37,34 @@ defmodule TorobBackend.StoresFixtures do
 
     product
   end
+
+  @doc """
+  Generate a model.
+  """
+  def model_fixture(attrs \\ %{}) do
+    {:ok, model} =
+      attrs
+      |> Enum.into(%{
+        avatar: "some avatar",
+        desc: "some desc",
+        name: "some name"
+      })
+      |> TorobBackend.Stores.create_model()
+
+    model
+  end
+
+  @doc """
+  Generate a product.
+  """
+  def product_fixture(attrs \\ %{}) do
+    {:ok, product} =
+      attrs
+      |> Enum.into(%{
+        price: 42
+      })
+      |> TorobBackend.Stores.create_product()
+
+    product
+  end
 end
