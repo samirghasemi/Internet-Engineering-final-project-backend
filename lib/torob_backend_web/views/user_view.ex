@@ -16,7 +16,7 @@ defmodule TorobBackendWeb.UserView do
       id: user.id,
       username: user.username,
       email: user.email,
-      avatar: user.avatar
+      avatar: TorobBackend.UserProfile.url({user.avatar, user})
     }
   end
   def render("jwt.json", %{jwt: jwt}) do

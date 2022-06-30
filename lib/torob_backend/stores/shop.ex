@@ -1,6 +1,7 @@
 defmodule TorobBackend.Stores.Shop do
   use Ecto.Schema
   import Ecto.Changeset
+  use Arc.Ecto.Schema
 
   schema "shops" do
     field :avatar, TorobBackend.ShopProfile.Type
@@ -15,7 +16,9 @@ defmodule TorobBackend.Stores.Shop do
   @doc false
   def changeset(shop, attrs) do
     shop
-    |> cast(attrs, [:name, :avatar, :desc, :link, :avatar])
-    |> validate_required([:name, :avatar, :desc, :link, :avatar])
+    |> cast(attrs, [:name, :desc, :link])
+    |> cast_attachments(attrs,[:avatar])
+    |> validate_required([:name, :desc, :link])
+
   end
 end

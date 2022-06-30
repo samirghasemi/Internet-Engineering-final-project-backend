@@ -35,7 +35,7 @@ defmodule TorobBackend.ShopProfile do
     IO.inspect(version)
     IO.puts(1)
 
-    "uploads/shop/avatars/#{scope.username}"
+    "uploads/shop/avatars/#{scope.name}"
   end
 
   def filename(version, {file, scope}) do
@@ -45,7 +45,7 @@ defmodule TorobBackend.ShopProfile do
     IO.puts(2)
 
     file_name = Path.basename(file.file_name, Path.extname(file.file_name))
-    "#{scope.username}_#{version}_#{file_name}"
+    "#{scope.name}_#{version}_#{file_name}"
   end
 
   # Provide a default URL if there hasn't been a file uploaded

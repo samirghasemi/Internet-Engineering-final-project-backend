@@ -40,6 +40,6 @@ defmodule TorobBackend.UserProfile do
 
   # Provide a default URL if there hasn't been a file uploaded
   def default_url(version) do
-    TorobBackendWeb.Endpoint.url <> "/uploads/user/default.png"
+    TorobBackendWeb.Endpoint.url <> "/uploads/user/avatars/default.png"
   end
 end
