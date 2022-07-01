@@ -154,8 +154,10 @@ defmodule TorobBackend.Stores do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_model(attrs \\ %{}) do
-    %Model{}
+  def create_model(attrs \\ %{}, category_id , subcategory_id) do
+    category = TorobBackend.Menu.get_category!(category_id)
+    category
+    |> Ecto.build_assoc(:models , category_id: category_id ,subcategory_id: subcategory_id)
     |> Model.changeset(attrs)
     |> Repo.insert()
   end
@@ -363,7 +365,7 @@ defmodule TorobBackend.Stores do
 
   def create_report2(attrs \\ %{}, maybe_user,product_id,shop_id) do
     maybe_user
-    |> Ecto.build_assoc(:products , product_id: product_id ,shop_id: shop_id)
+    |> Ecto.build_assoc(:reports , product_id: product_id ,shop_id: shop_id)
     |> Report.changeset(attrs)
     |> Repo.insert()
   end

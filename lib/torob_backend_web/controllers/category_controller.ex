@@ -22,7 +22,7 @@ defmodule TorobBackendWeb.CategoryController do
 
   def show(conn, %{"id" => id}) do
     category = Menu.get_category2!(id) |> IO.inspect
-    render(conn, "show.json", category: category)
+    render(conn, "show_with_sub.json", category: category)
   end
 
   def update(conn, %{"id" => id, "category" => category_params}) do

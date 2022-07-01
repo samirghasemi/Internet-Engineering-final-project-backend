@@ -4,7 +4,7 @@ defmodule TorobBackendWeb.CategoryView do
   alias TorobBackendWeb.SubcategoryView
 
   def render("index.json", %{categories: categories}) do
-    %{data: render_many(categories, CategoryView, "category.json")}
+    render_many(categories, CategoryView, "category_with_sub.json")
   end
 
   def render("show.json", %{category: category}) do
@@ -15,7 +15,18 @@ defmodule TorobBackendWeb.CategoryView do
     %{
       id: category.id,
       title: category.title,
-      subs: render_many(category.subcategories, SubcategoryView, "subcategory.json")
+    }
+  end
+
+  def render("show_with_sub.json", %{category: category}) do
+    %{data: render_one(category, CategoryView, "category_with_sub.json")}
+  end
+
+  def render("category_with_sub.json", %{category: category}) do
+    %{
+      id: category.id,
+      category: category.title,
+      subcategory: render_many(category.subcategories, SubcategoryView, "subcategory_with_brand.json")
     }
   end
 end

@@ -7,11 +7,15 @@ defmodule TorobBackend.Stores.Model do
     field :avatar, TorobBackend.ModelProfile.Type
     field :desc, :string
     field :name, :string
+
     field :ram, :string
     field :storage, :string
     field :battery, :string
     field :screen_size, :string
 
+    belongs_to :category , TorobBackend.Menu.Category
+    belongs_to :subcategory , TorobBackend.Menu.Subcategory
+    belongs_to :brand , TorobBackend.Menu.Brand
     has_many :products , TorobBackend.Stores.Product
     timestamps()
   end

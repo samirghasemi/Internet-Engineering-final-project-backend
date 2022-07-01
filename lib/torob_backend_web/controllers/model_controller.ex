@@ -26,8 +26,8 @@ defmodule TorobBackendWeb.ModelController do
     render(conn, "index.json", models: models)
   end
 
-  def create(conn, %{"model" => model_params}) do
-    with {:ok, %Model{} = model} <- Stores.create_model(model_params) do
+  def create(conn, %{"model" => model_params , "category_id" => category_id, "subcategory_id" => subcategory_id}) do
+    with {:ok, %Model{} = model} <- Stores.create_model(model_params, category_id , subcategory_id) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.model_path(conn, :show, model))

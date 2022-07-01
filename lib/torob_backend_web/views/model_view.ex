@@ -15,11 +15,16 @@ defmodule TorobBackendWeb.ModelView do
       id: model.id,
       name: model.name,
       desc: model.desc,
-      ram: model.ram,
-      battery: model.battery,
-      screen_size: model.screen_size,
-      storage: model.storage,
-      avatar: TorobBackend.ModelProfile.url({model.avatar, model})
+      category: model.category_id,
+      subcategory: model.subcategory_id,
+      brand: model.brand_id,
+      meta: %{
+        ram: model.ram,
+        battery: model.battery,
+        screen_size: model.screen_size,
+        storage: model.storage
+      }
+#      avatar: TorobBackend.ModelProfile.url({model.avatar, model})
     }
   end
 end

@@ -31,4 +31,20 @@ defmodule TorobBackend.MenuFixtures do
 
     subcategory
   end
+
+  @doc """
+  Generate a brand.
+  """
+  def brand_fixture(attrs \\ %{}) do
+    {:ok, brand} =
+      attrs
+      |> Enum.into(%{
+        category: "some category",
+        subcategory: "some subcategory",
+        title: "some title"
+      })
+      |> TorobBackend.Menu.create_brand()
+
+    brand
+  end
 end

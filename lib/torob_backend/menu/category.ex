@@ -5,6 +5,7 @@ defmodule TorobBackend.Menu.Category do
   schema "categories" do
     field :title, :string
     has_many :subcategories , TorobBackend.Menu.Subcategory
+    has_many :models , TorobBackend.Stores.Model
 
     timestamps()
   end

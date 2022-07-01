@@ -5,7 +5,7 @@ config :torob_backend, TorobBackend.Repo,
   username: "postgres",
   password: "changeme",
   hostname: "postgres.db.samirghasemi.ir",
-  database: "test3_dev",
+  database: "test4_dev",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

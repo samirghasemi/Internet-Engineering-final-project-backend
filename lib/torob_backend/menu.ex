@@ -21,7 +21,7 @@ defmodule TorobBackend.Menu do
     Repo.all(Category)
   end
   def list_categories_with_subs do
-    Repo.all(Category) |> Repo.preload([:subcategories])
+    Repo.all(Category) |> Repo.preload(subcategories: [:brands])
   end
 
   @doc """
@@ -39,7 +39,7 @@ defmodule TorobBackend.Menu do
 
   """
   def get_category!(id), do: Repo.get!(Category, id)
-  def get_category2!(id), do: Repo.get!(Category, id)|> Repo.preload([:subcategories])
+  def get_category2!(id), do: Repo.get!(Category, id)|> Repo.preload(subcategories: [:brands])
 
   @doc """
   Creates a category.
@@ -202,5 +202,104 @@ defmodule TorobBackend.Menu do
   """
   def change_subcategory(%Subcategory{} = subcategory, attrs \\ %{}) do
     Subcategory.changeset(subcategory, attrs)
+  end
+
+  alias TorobBackend.Menu.Brand
+
+  @doc """
+  Returns the list of brands.
+
+  ## Examples
+
+      iex> list_brands()
+      [%Brand{}, ...]
+
+  """
+  def list_brands do
+    Repo.all(Brand)
+  end
+
+  @doc """
+  Gets a single brand.
+
+  Raises `Ecto.NoResultsError` if the Brand does not exist.
+
+  ## Examples
+
+      iex> get_brand!(123)
+      %Brand{}
+
+      iex> get_brand!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_brand!(id), do: Repo.get!(Brand, id)
+
+  @doc """
+  Creates a brand.
+
+  ## Examples
+
+      iex> create_brand(%{field: value})
+      {:ok, %Brand{}}
+
+      iex> create_brand(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_brand(attrs \\ %{}, subcategory_id) do
+    %Brand{}
+    subcategory = get_subcategory!(subcategory_id)
+    subcategory
+    |> Ecto.build_assoc(:brands)
+    |> Brand.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a brand.
+
+  ## Examples
+
+      iex> update_brand(brand, %{field: new_value})
+      {:ok, %Brand{}}
+
+      iex> update_brand(brand, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_brand(%Brand{} = brand, attrs) do
+    brand
+    |> Brand.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a brand.
+
+  ## Examples
+
+      iex> delete_brand(brand)
+      {:ok, %Brand{}}
+
+      iex> delete_brand(brand)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_brand(%Brand{} = brand) do
+    Repo.delete(brand)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking brand changes.
+
+  ## Examples
+
+      iex> change_brand(brand)
+      %Ecto.Changeset{data: %Brand{}}
+
+  """
+  def change_brand(%Brand{} = brand, attrs \\ %{}) do
+    Brand.changeset(brand, attrs)
   end
 end
