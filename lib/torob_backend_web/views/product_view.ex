@@ -13,7 +13,10 @@ defmodule TorobBackendWeb.ProductView do
   def render("product.json", %{product: product}) do
     %{
       id: product.id,
-      price: product.price
+      price: product.price,
+      model_id: product.model_id,
+      user_id: product.user_id,
+      shop_id: product.shop_id
     }
   end
 end

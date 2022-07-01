@@ -17,7 +17,7 @@ defmodule TorobBackendWeb.ShopView do
       name: shop.name,
       desc: shop.desc,
       link: shop.link,
-      avatar: shop.avatar
+      avatar: TorobBackend.ShopProfile.url({shop.avatar, shop})
     }
   end
 end

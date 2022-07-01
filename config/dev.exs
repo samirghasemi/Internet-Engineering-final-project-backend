@@ -5,7 +5,8 @@ config :torob_backend, TorobBackend.Repo,
   username: "postgres",
   password: "changeme",
   hostname: "postgres.db.samirghasemi.ir",
-  database: "torob_backend_dev",
+#  hostname: "localhost",
+  database: "torob_backend_test1_dev",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -22,7 +23,7 @@ config :torob_backend, TorobBackendWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "FUi8Hyslm1Jq2iHCXHJH+vgdOreiK7XlAv2MnGXB+RHuoIbYywp9CABmaiOTArWV",
+  secret_key_base: "FUi8Hyslm1JA4iHCXHJH+vgdOreiK7XlAv2MnGXB+RHuoIbYywp9CABmaiOTArWV",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}

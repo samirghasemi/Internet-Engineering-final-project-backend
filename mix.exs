@@ -48,7 +48,8 @@ defmodule TorobBackend.MixProject do
       {:arc_ecto, "~> 0.11.3"},
       {:arc , "~> 0.11.0"},
       {:pbkdf2_elixir, "~> 1.4"},
-      {:guardian, "~> 2.0"}
+      {:guardian, "~> 2.0"},
+      {:cors_plug, "~> 3.0"},
     ]
   end
 

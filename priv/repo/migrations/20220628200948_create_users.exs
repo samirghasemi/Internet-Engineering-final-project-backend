@@ -7,6 +7,7 @@ defmodule TorobBackend.Repo.Migrations.CreateUsers do
       add :password, :string
       add :email, :string
       add :avatar, :string
+      add :is_admin, :boolean
 
       timestamps()
     end

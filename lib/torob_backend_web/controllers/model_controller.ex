@@ -6,6 +6,21 @@ defmodule TorobBackendWeb.ModelController do
 
   action_fallback TorobBackendWeb.FallbackController
 
+  plug :exists when action in [:edit, :update, :delete, :show]
+
+  def exists(%{params: %{"id" => model_id}} = conn, _) do
+    model_id = String.to_integer(model_id)
+    model = Stores.get_model(model_id)
+    if model == nil do
+      conn
+      |> put_status(:not_found)
+      |> json(%{error: "this link is not exists!"})
+      |> halt()
+    else
+      conn
+    end
+  end
+
   def index(conn, _params) do
     models = Stores.list_models()
     render(conn, "index.json", models: models)

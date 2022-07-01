@@ -140,6 +140,7 @@ defmodule TorobBackend.Stores do
 
   """
   def get_model!(id), do: Repo.get!(Model, id)
+  def get_model(id), do: Repo.get(Model, id)
 
   @doc """
   Creates a model.
@@ -236,6 +237,7 @@ defmodule TorobBackend.Stores do
 
   """
   def get_product!(id), do: Repo.get!(Product, id)
+  def get_product(id), do: Repo.get(Product, id)
 
   @doc """
   Creates a product.
@@ -251,6 +253,13 @@ defmodule TorobBackend.Stores do
   """
   def create_product(attrs \\ %{}) do
     %Product{}
+    |> Product.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def create_product2(attrs \\ %{} , maybe_user , model_id , shop_id) do
+    maybe_user
+    |> Ecto.build_assoc(:products , model_id: model_id ,shop_id: shop_id)
     |> Product.changeset(attrs)
     |> Repo.insert()
   end

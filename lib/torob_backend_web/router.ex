@@ -22,6 +22,9 @@ defmodule TorobBackendWeb.Router do
     resources "/users" , UserController ,except: [:new , :edit , :create]
     resources "/shops" , ShopController ,except: [:new , :edit ]
     resources "/models" , ModelController ,except: [:new , :edit ]
+    resources "/products" , ProductController ,except: [:new , :edit ]
+    resources "/category" , CategoryController ,except: [:new , :edit ]
+    resources "/subcategory" , SubcategoryController ,except: [:new , :edit ]
 #    resources "/reservations" , ReservationController ,except: [:new , :edit , :create ]
 #    post "/reservations/:id", ReservationController, :create
 

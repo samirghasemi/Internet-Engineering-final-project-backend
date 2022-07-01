@@ -15,7 +15,7 @@ defmodule TorobBackendWeb.ModelView do
       id: model.id,
       name: model.name,
       desc: model.desc,
-      avatar: model.avatar
+      avatar: TorobBackend.ModelProfile.url({model.avatar, model})
     }
   end
 end

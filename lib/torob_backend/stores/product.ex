@@ -7,6 +7,7 @@ defmodule TorobBackend.Stores.Product do
     belongs_to :user , TorobBackend.Accounts.User
     belongs_to :shop , TorobBackend.Stores.Shop
     belongs_to :model , TorobBackend.Stores.Model
+#    many_to_many :likes, TorobBackend.Stores.Product,join_through: "likes", on_replace: :delete
     timestamps()
   end
 

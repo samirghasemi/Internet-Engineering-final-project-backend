@@ -9,8 +9,10 @@ defmodule TorobBackend.Accounts.User do
     field :email, :string
     field :password, :string
     field :username, :string
+    field :is_admin, :boolean
+
     has_many :shops , TorobBackend.Stores.Shop
-    has_many :products , TorobBackend.Stores.Product
+    has_many :products, TorobBackend.Stores.Product
 
 
     timestamps()
