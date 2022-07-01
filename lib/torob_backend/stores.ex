@@ -341,6 +341,7 @@ defmodule TorobBackend.Stores do
 
   """
   def get_report!(id), do: Repo.get!(Report, id)
+  def get_report(id), do: Repo.get(Report, id)
 
   @doc """
   Creates a report.
@@ -356,6 +357,13 @@ defmodule TorobBackend.Stores do
   """
   def create_report(attrs \\ %{}) do
     %Report{}
+    |> Report.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def create_report2(attrs \\ %{}, maybe_user,product_id,shop_id) do
+    maybe_user
+    |> Ecto.build_assoc(:products , product_id: product_id ,shop_id: shop_id)
     |> Report.changeset(attrs)
     |> Repo.insert()
   end

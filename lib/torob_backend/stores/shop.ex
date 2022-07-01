@@ -10,6 +10,7 @@ defmodule TorobBackend.Stores.Shop do
     field :name, :string
     belongs_to :user , TorobBackend.Accounts.User
     has_many :products , TorobBackend.Stores.Product
+    has_many :reports, TorobBackend.Stores.Report
 
     timestamps()
   end

@@ -13,6 +13,7 @@ defmodule TorobBackend.Accounts.User do
 
     has_many :shops , TorobBackend.Stores.Shop
     has_many :products, TorobBackend.Stores.Product
+    has_many :reports, TorobBackend.Stores.Report
 
 
     timestamps()

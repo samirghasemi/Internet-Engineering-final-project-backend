@@ -3,11 +3,11 @@ defmodule TorobBackendWeb.ShopView do
   alias TorobBackendWeb.ShopView
 
   def render("index.json", %{shops: shops}) do
-    %{data: render_many(shops, ShopView, "shop.json")}
+    %{data: render_many(shops, ShopView, "shop_for_user.json")}
   end
 
   def render("show_for_user.json", %{shop: shop}) do
-    %{shop: render_one(shop, ShopView, "shop_for_user.json")}
+    render_one(shop, ShopView, "shop_for_user.json")
   end
 
   def render("shop_for_user.json", %{shop: shop}) do
