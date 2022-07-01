@@ -7,7 +7,7 @@ defmodule TorobBackend.Stores do
   alias TorobBackend.Repo
 
   alias TorobBackend.Stores.Shop
-
+  alias TorobBackend.Stores.Model
   @doc """
   Returns the list of shops.
 
@@ -121,9 +121,18 @@ defmodule TorobBackend.Stores do
       [%Model{}, ...]
 
   """
+
   def list_models do
     Repo.all(Model)
   end
+
+#  def custom_list_model(min_price, max_price, category_id, sub_category_id, brand_id,sort_by) do
+#    query = case category_id do
+#      nil ->
+#        quer
+#    end
+#    Repo.all(from m in Model, where: m.price >= ^min_price and r.entry_date <= ^date_after , select: [:user_id])
+#  end
 
   @doc """
   Gets a single model.

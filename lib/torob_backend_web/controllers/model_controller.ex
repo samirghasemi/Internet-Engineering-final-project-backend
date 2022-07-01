@@ -55,4 +55,8 @@ defmodule TorobBackendWeb.ModelController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def search(conn, params)do
+    res = Stores.
+  end
 end
