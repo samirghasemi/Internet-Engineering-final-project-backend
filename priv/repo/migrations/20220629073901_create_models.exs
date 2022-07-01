@@ -7,6 +7,7 @@ defmodule TorobBackend.Repo.Migrations.CreateModels do
       add :desc, :text
       add :avatar, :string
       add :ram, :string
+      add :image, :string
       add :storage, :string
       add :battery, :string
       add :screen_size, :string

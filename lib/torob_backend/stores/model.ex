@@ -7,7 +7,7 @@ defmodule TorobBackend.Stores.Model do
     field :avatar, TorobBackend.ModelProfile.Type
     field :desc, :string
     field :name, :string
-
+    field :image, :string
     field :ram, :string
     field :storage, :string
     field :battery, :string
@@ -25,7 +25,7 @@ defmodule TorobBackend.Stores.Model do
   @doc false
   def changeset(model, attrs) do
     model
-    |> cast(attrs, [:name, :desc, :ram, :storage, :battery, :screen_size])
+    |> cast(attrs, [:name, :desc, :ram, :storage, :battery, :screen_size, :image])
     |> cast_attachments(attrs,[:avatar])
     |> validate_required([:name, :desc, :ram, :storage, :battery, :screen_size])
     |> unique_constraint(:name)
