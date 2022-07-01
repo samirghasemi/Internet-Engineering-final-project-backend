@@ -34,4 +34,20 @@ defmodule TorobBackend.AccountsFixtures do
 
     like
   end
+
+  @doc """
+  Generate a like.
+  """
+  def like_fixture(attrs \\ %{}) do
+    {:ok, like} =
+      attrs
+      |> Enum.into(%{
+        is_like: true,
+        model_id: "some model_id",
+        user_id: "some user_id"
+      })
+      |> TorobBackend.Accounts.create_like()
+
+    like
+  end
 end

@@ -14,6 +14,7 @@ defmodule TorobBackend.Accounts.User do
     has_many :shops , TorobBackend.Stores.Shop
     has_many :products, TorobBackend.Stores.Product
     has_many :reports, TorobBackend.Stores.Report
+    has_many :likes, TorobBackend.Accounts.Like
 
 
     timestamps()
@@ -26,9 +27,8 @@ defmodule TorobBackend.Accounts.User do
     |> cast(attrs, [:username, :password , :email, :is_admin])
     |> cast_attachments(attrs,[:avatar])
     |> validate_required([:username, :password, :email])
-    |> validate_format(:email, ~r/@/)
-    |> unique_constraint(:username)
-    |> unique_constraint(:email)
+    |> validate_email
+    |> validate_password
     |> put_password_hash()
   end
 
@@ -37,4 +37,21 @@ defmodule TorobBackend.Accounts.User do
   end
 
   defp put_password_hash(changeset), do: changeset
+
+  defp validate_email(changeset) do
+    changeset
+    |> validate_required([:email])
+    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "must have the @ sign and no spaces")
+    |> validate_length(:email, max: 160)
+    |> unique_constraint(:email)
+  end
+
+  defp validate_password(changeset) do
+    changeset
+    |> validate_required([:password])
+    |> validate_length(:password, min: 8, max: 80)
+    |> validate_format(:password, ~r/[a-z]/, message: "at least one lower case character")
+    |> validate_format(:password, ~r/[A-Z]/, message: "at least one upper case character")
+    |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")
+  end
 end

@@ -17,6 +17,8 @@ defmodule TorobBackend.Stores.Model do
     belongs_to :subcategory , TorobBackend.Menu.Subcategory
     belongs_to :brand , TorobBackend.Menu.Brand
     has_many :products , TorobBackend.Stores.Product
+    has_many :likes, TorobBackend.Accounts.Like
+
     timestamps()
   end
 

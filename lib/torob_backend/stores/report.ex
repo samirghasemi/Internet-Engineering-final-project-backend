@@ -4,6 +4,7 @@ defmodule TorobBackend.Stores.Report do
 
   schema "reports" do
     field :message, :string
+    field :desc, :string
     belongs_to :user , TorobBackend.Accounts.User
     belongs_to :shop , TorobBackend.Stores.Shop
     belongs_to :product , TorobBackend.Stores.Product
@@ -13,7 +14,7 @@ defmodule TorobBackend.Stores.Report do
   @doc false
   def changeset(report, attrs) do
     report
-    |> cast(attrs, [:message])
+    |> cast(attrs, [:message,:desc])
     |> validate_required([:message])
   end
 end

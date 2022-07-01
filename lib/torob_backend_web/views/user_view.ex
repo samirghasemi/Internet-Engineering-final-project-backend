@@ -34,8 +34,11 @@ defmodule TorobBackendWeb.UserView do
       shops: render_many(user.shops, ShopView, "show_for_user.json")
     }
   end
-  def render("jwt.json", %{jwt: jwt}) do
-    %{jwt: jwt}
+  def render("jwt.json", %{jwt: jwt , is_admin: is_admin}) do
+    %{
+      jwt: jwt,
+      is_admin: is_admin
+    }
   end
 
   def render("unauth.json",%{error: error}) do

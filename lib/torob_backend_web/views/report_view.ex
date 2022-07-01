@@ -13,7 +13,8 @@ defmodule TorobBackendWeb.ReportView do
   def render("report.json", %{report: report}) do
     %{
       id: report.id,
-      message: report.message
+      message: report.message,
+      desc: report.desc
     }
   end
 end

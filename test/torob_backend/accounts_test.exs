@@ -116,4 +116,62 @@ defmodule TorobBackend.AccountsTest do
       assert %Ecto.Changeset{} = Accounts.change_like(like)
     end
   end
+
+  describe "likes" do
+    alias TorobBackend.Accounts.Like
+
+    import TorobBackend.AccountsFixtures
+
+    @invalid_attrs %{is_like: nil, model_id: nil, user_id: nil}
+
+    test "list_likes/0 returns all likes" do
+      like = like_fixture()
+      assert Accounts.list_likes() == [like]
+    end
+
+    test "get_like!/1 returns the like with given id" do
+      like = like_fixture()
+      assert Accounts.get_like!(like.id) == like
+    end
+
+    test "create_like/1 with valid data creates a like" do
+      valid_attrs = %{is_like: true, model_id: "some model_id", user_id: "some user_id"}
+
+      assert {:ok, %Like{} = like} = Accounts.create_like(valid_attrs)
+      assert like.is_like == true
+      assert like.model_id == "some model_id"
+      assert like.user_id == "some user_id"
+    end
+
+    test "create_like/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Accounts.create_like(@invalid_attrs)
+    end
+
+    test "update_like/2 with valid data updates the like" do
+      like = like_fixture()
+      update_attrs = %{is_like: false, model_id: "some updated model_id", user_id: "some updated user_id"}
+
+      assert {:ok, %Like{} = like} = Accounts.update_like(like, update_attrs)
+      assert like.is_like == false
+      assert like.model_id == "some updated model_id"
+      assert like.user_id == "some updated user_id"
+    end
+
+    test "update_like/2 with invalid data returns error changeset" do
+      like = like_fixture()
+      assert {:error, %Ecto.Changeset{}} = Accounts.update_like(like, @invalid_attrs)
+      assert like == Accounts.get_like!(like.id)
+    end
+
+    test "delete_like/1 deletes the like" do
+      like = like_fixture()
+      assert {:ok, %Like{}} = Accounts.delete_like(like)
+      assert_raise Ecto.NoResultsError, fn -> Accounts.get_like!(like.id) end
+    end
+
+    test "change_like/1 returns a like changeset" do
+      like = like_fixture()
+      assert %Ecto.Changeset{} = Accounts.change_like(like)
+    end
+  end
 end

@@ -13,6 +13,7 @@ defmodule TorobBackendWeb.LikeView do
   def render("like.json", %{like: like}) do
     %{
       id: like.id,
+      is_like: like.is_like,
       user_id: like.user_id,
       model_id: like.model_id
     }

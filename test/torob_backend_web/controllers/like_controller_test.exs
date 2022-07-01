@@ -6,14 +6,16 @@ defmodule TorobBackendWeb.LikeControllerTest do
   alias TorobBackend.Accounts.Like
 
   @create_attrs %{
+    is_like: true,
     model_id: "some model_id",
     user_id: "some user_id"
   }
   @update_attrs %{
+    is_like: false,
     model_id: "some updated model_id",
     user_id: "some updated user_id"
   }
-  @invalid_attrs %{model_id: nil, user_id: nil}
+  @invalid_attrs %{is_like: nil, model_id: nil, user_id: nil}
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -35,6 +37,7 @@ defmodule TorobBackendWeb.LikeControllerTest do
 
       assert %{
                "id" => ^id,
+               "is_like" => true,
                "model_id" => "some model_id",
                "user_id" => "some user_id"
              } = json_response(conn, 200)["data"]
@@ -57,6 +60,7 @@ defmodule TorobBackendWeb.LikeControllerTest do
 
       assert %{
                "id" => ^id,
+               "is_like" => false,
                "model_id" => "some updated model_id",
                "user_id" => "some updated user_id"
              } = json_response(conn, 200)["data"]
