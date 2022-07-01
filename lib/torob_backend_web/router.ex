@@ -28,6 +28,7 @@ defmodule TorobBackendWeb.Router do
     resources "/subcategory" , SubcategoryController ,except: [:new , :edit ]
     resources "/brand" , BrandController ,except: [:new , :edit ]
     resources "/report" , ReportController ,except: [:new , :edit ]
+    resources "/like" , LikeController ,except: [:new , :edit ]
 #    resources "/reservations" , ReservationController ,except: [:new , :edit , :create ]
 #    post "/reservations/:id", ReservationController, :create
 

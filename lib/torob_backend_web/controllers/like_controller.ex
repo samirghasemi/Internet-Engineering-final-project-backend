@@ -6,13 +6,17 @@ defmodule TorobBackendWeb.LikeController do
 
   action_fallback TorobBackendWeb.FallbackController
 
+  def load_current_user(conn) do
+    Guardian.Plug.current_resource(conn)
+  end
+
   def index(conn, _params) do
     likes = Accounts.list_likes()
     render(conn, "index.json", likes: likes)
   end
 
-  def create(conn, %{"like" => like_params}) do
-    with {:ok, %Like{} = like} <- Accounts.create_like(like_params) do
+  def create(conn, %{"like" => like_params, "model_id"=> model_id}) do
+    with {:ok, %Like{} = like} <- Accounts.create_like2(like_params, load_current_user(conn),model_id) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.like_path(conn, :show, like))

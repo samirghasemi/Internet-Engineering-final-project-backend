@@ -52,7 +52,7 @@ defmodule TorobBackend.Accounts do
   def token_sign_in(username , password) do
     case user_password_auth(username , password) do
       {:ok , user} ->
-        Guardian.encode_and_sign(user)
+        {Guardian.encode_and_sign(user),user}
       _ ->
         {:error , :unauthorized}
     end
@@ -188,6 +188,14 @@ defmodule TorobBackend.Accounts do
   """
   def create_like(attrs \\ %{}) do
     %Like{}
+    |> Like.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def create_like2(attrs \\ %{}, maybe_user, model_id) do
+
+    maybe_user
+    |> Ecto.build_assoc(:likes , model_id: String.to_integer(model_id))
     |> Like.changeset(attrs)
     |> Repo.insert()
   end

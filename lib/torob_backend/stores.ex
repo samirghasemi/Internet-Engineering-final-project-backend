@@ -163,10 +163,11 @@ defmodule TorobBackend.Stores do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_model(attrs \\ %{}, category_id , subcategory_id) do
+  def create_model(attrs \\ %{}, category_id , subcategory_id, model_id) do
     category = TorobBackend.Menu.get_category!(category_id)
+
     category
-    |> Ecto.build_assoc(:models , category_id: category_id ,subcategory_id: subcategory_id)
+    |> Ecto.build_assoc(:models ,subcategory_id: String.to_integer(subcategory_id) , model_id: String.to_integer(model_id))
     |> Model.changeset(attrs)
     |> Repo.insert()
   end
