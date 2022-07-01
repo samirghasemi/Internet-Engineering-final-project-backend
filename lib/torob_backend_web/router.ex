@@ -14,7 +14,7 @@ defmodule TorobBackendWeb.Router do
     post "/sign_up", UserController, :create
     post "/sign_in", UserController, :sign_in
     get "/log_out", UserController, :log_out
-
+    get "/category", CategoryController, :index
   end
 
   scope "/api", TorobBackendWeb do
@@ -24,7 +24,7 @@ defmodule TorobBackendWeb.Router do
     resources "/shops" , ShopController ,except: [:new , :edit ]
     resources "/models" , ModelController ,except: [:new , :edit ]
     resources "/products" , ProductController ,except: [:new , :edit ]
-    resources "/category" , CategoryController ,except: [:new , :edit ]
+    resources "/category" , CategoryController ,except: [:new , :edit, :index ]
     resources "/subcategory" , SubcategoryController ,except: [:new , :edit ]
     resources "/brand" , BrandController ,except: [:new , :edit ]
     resources "/report" , ReportController ,except: [:new , :edit ]
