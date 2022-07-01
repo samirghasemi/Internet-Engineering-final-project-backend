@@ -38,7 +38,7 @@ defmodule TorobBackendWeb.UserView do
     %{jwt: jwt}
   end
 
-  def render("unauth.json",_nothing) do
-    %{error: :unauthorized}
+  def render("unauth.json",%{error: error}) do
+    %{error: error}
   end
 end

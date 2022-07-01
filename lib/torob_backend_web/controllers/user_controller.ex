@@ -63,7 +63,7 @@ defmodule TorobBackendWeb.UserController do
       _ ->
         conn
         |> put_status(:unauthorized)
-        render("unauth.json")
+        |> render("unauth.json" , error: "unauthorized")
     end
   end
 
