@@ -23,22 +23,10 @@ defmodule TorobBackendWeb.SubcategoryView do
   end
 
   def render("subcategory_with_brand.json", %{subcategory: subcategory}) do
-#    IO.inspect subcategory.brands
     %{
       id: subcategory.id,
       title: subcategory.title,
-      names[
-    {
-        "category": "موبایل و تبلت",
-        "id": 1,
-        "subcategory": [
-            {
-                "id": 1,
-                "names": [
-                    {
-                        "id": 1,
-…    }
-]: render_many(subcategory.brands, BrandView, "brand.json")
+      names: render_many(subcategory.brands, BrandView, "brand.json")
     }
   end
 end
