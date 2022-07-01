@@ -3,6 +3,9 @@ defmodule TorobBackendWeb.UserView do
   use TorobBackendWeb, :view
   alias TorobBackendWeb.UserView
   alias TorobBackendWeb.ShopView
+  alias TorobBackendWeb.LikeView
+  alias TorobBackendWeb.ProductView
+  alias TorobBackendWeb.ReportView
 
   def render("index.json", %{users: users}) do
     %{data: render_many(users, UserView, "user_with_shop.json")}
@@ -31,7 +34,12 @@ defmodule TorobBackendWeb.UserView do
       username: user.username,
       email: user.email,
       avatar: TorobBackend.UserProfile.url({user.avatar, user}),
-      shops: render_many(user.shops, ShopView, "show_for_user.json")
+      is_admin: user.is_admin,
+      shops: render_many(user.shops, ShopView, "show_for_user.json"),
+      products: render_many(user.products, ProductView, "show.json"),
+      reports: render_many(user.reports, ReportView, "show.json"),
+      likes: render_many(user.likes, LikeView, "show_for_user.json")
+
     }
   end
   def render("jwt.json", %{jwt: jwt , is_admin: is_admin}) do
