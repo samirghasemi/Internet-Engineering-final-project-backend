@@ -42,7 +42,7 @@ defmodule TorobBackendWeb.UserController do
   end
 
   def index(conn, _params) do
-    users = Accounts.list_users()
+    users = Accounts.list_users2()
     render(conn, "index.json", users: users)
   end
 
@@ -51,7 +51,7 @@ defmodule TorobBackendWeb.UserController do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.user_path(conn, :show, user))
-      |> render("show.json", user: user)
+      |> render("show_with_shop.json", user: user)
     end
   end
 
@@ -65,9 +65,14 @@ defmodule TorobBackendWeb.UserController do
     end
   end
 
+  def log_out(conn, _) do
+    conn
+    |> Guardian.Plug.sign_out()
+  end
+
   def show(conn, %{"id" => id}) do
-    user = Accounts.get_user!(id)
-    render(conn, "show.json", user: user)
+    user = Accounts.get_user2!(id)
+    render(conn, "show_with_shop.json", user: user)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do

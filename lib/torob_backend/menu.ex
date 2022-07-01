@@ -20,6 +20,9 @@ defmodule TorobBackend.Menu do
   def list_categories do
     Repo.all(Category)
   end
+  def list_categories_with_subs do
+    Repo.all(Category) |> Repo.preload([:subcategories])
+  end
 
   @doc """
   Gets a single category.
@@ -36,6 +39,7 @@ defmodule TorobBackend.Menu do
 
   """
   def get_category!(id), do: Repo.get!(Category, id)
+  def get_category2!(id), do: Repo.get!(Category, id)|> Repo.preload([:subcategories])
 
   @doc """
   Creates a category.
@@ -146,8 +150,10 @@ defmodule TorobBackend.Menu do
 
   """
   def create_subcategory(attrs \\ %{},category_id) do
-    %Subcategory{}
-    |> Subcategory.changeset(attrs , category_id: category_id)
+    category = get_category!(category_id)
+    category
+    |> Ecto.build_assoc(:subcategories)
+    |> Subcategory.changeset(attrs)
     |> Repo.insert()
   end
 

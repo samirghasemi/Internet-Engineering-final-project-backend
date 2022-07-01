@@ -67,4 +67,18 @@ defmodule TorobBackend.StoresFixtures do
 
     product
   end
+
+  @doc """
+  Generate a report.
+  """
+  def report_fixture(attrs \\ %{}) do
+    {:ok, report} =
+      attrs
+      |> Enum.into(%{
+        message: "some message"
+      })
+      |> TorobBackend.Stores.create_report()
+
+    report
+  end
 end

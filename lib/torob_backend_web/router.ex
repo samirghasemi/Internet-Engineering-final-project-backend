@@ -13,6 +13,7 @@ defmodule TorobBackendWeb.Router do
     pipe_through :api
     post "/sign_up", UserController, :create
     post "/sign_in", UserController, :sign_in
+    get "/log_out", UserController, :log_out
 
   end
 

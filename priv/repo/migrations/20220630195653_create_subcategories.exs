@@ -4,7 +4,7 @@ defmodule TorobBackend.Repo.Migrations.CreateSubcategories do
   def change do
     create table(:subcategories) do
       add :title, :string
-      add :category, references(:categories, on_delete: :delete_all)
+      add :category_id, references(:categories, on_delete: :delete_all)
 
       timestamps()
     end

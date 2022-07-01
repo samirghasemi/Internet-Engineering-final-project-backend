@@ -12,7 +12,7 @@ defmodule TorobBackendWeb.SubcategoryController do
   end
 
   def create(conn, %{"subcategory" => subcategory_params , "category_id" => category_id}) do
-    with {:ok, %Subcategory{} = subcategory} <- Menu.create_subcategory(subcategory_params, category_id) do
+    with {:ok, %Subcategory{} = subcategory} <- Menu.create_subcategory(subcategory_params,category_id) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.subcategory_path(conn, :show, subcategory))

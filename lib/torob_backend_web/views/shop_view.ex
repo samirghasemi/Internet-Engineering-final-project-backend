@@ -6,6 +6,20 @@ defmodule TorobBackendWeb.ShopView do
     %{data: render_many(shops, ShopView, "shop.json")}
   end
 
+  def render("show_for_user.json", %{shop: shop}) do
+    %{shop: render_one(shop, ShopView, "shop_for_user.json")}
+  end
+
+  def render("shop_for_user.json", %{shop: shop}) do
+    %{
+      id: shop.id,
+      name: shop.name,
+      desc: shop.desc,
+      link: shop.link,
+      avatar: TorobBackend.ShopProfile.url({shop.avatar, shop})
+    }
+  end
+
   def render("show.json", %{shop: shop}) do
     %{data: render_one(shop, ShopView, "shop.json")}
   end

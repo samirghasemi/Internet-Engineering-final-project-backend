@@ -174,4 +174,58 @@ defmodule TorobBackend.StoresTest do
       assert %Ecto.Changeset{} = Stores.change_product(product)
     end
   end
+
+  describe "reports" do
+    alias TorobBackend.Stores.Report
+
+    import TorobBackend.StoresFixtures
+
+    @invalid_attrs %{message: nil}
+
+    test "list_reports/0 returns all reports" do
+      report = report_fixture()
+      assert Stores.list_reports() == [report]
+    end
+
+    test "get_report!/1 returns the report with given id" do
+      report = report_fixture()
+      assert Stores.get_report!(report.id) == report
+    end
+
+    test "create_report/1 with valid data creates a report" do
+      valid_attrs = %{message: "some message"}
+
+      assert {:ok, %Report{} = report} = Stores.create_report(valid_attrs)
+      assert report.message == "some message"
+    end
+
+    test "create_report/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Stores.create_report(@invalid_attrs)
+    end
+
+    test "update_report/2 with valid data updates the report" do
+      report = report_fixture()
+      update_attrs = %{message: "some updated message"}
+
+      assert {:ok, %Report{} = report} = Stores.update_report(report, update_attrs)
+      assert report.message == "some updated message"
+    end
+
+    test "update_report/2 with invalid data returns error changeset" do
+      report = report_fixture()
+      assert {:error, %Ecto.Changeset{}} = Stores.update_report(report, @invalid_attrs)
+      assert report == Stores.get_report!(report.id)
+    end
+
+    test "delete_report/1 deletes the report" do
+      report = report_fixture()
+      assert {:ok, %Report{}} = Stores.delete_report(report)
+      assert_raise Ecto.NoResultsError, fn -> Stores.get_report!(report.id) end
+    end
+
+    test "change_report/1 returns a report changeset" do
+      report = report_fixture()
+      assert %Ecto.Changeset{} = Stores.change_report(report)
+    end
+  end
 end

@@ -7,7 +7,7 @@ defmodule TorobBackendWeb.CategoryController do
   action_fallback TorobBackendWeb.FallbackController
 
   def index(conn, _params) do
-    categories = Menu.list_categories()
+    categories = Menu.list_categories_with_subs()
     render(conn, "index.json", categories: categories)
   end
 
@@ -21,7 +21,7 @@ defmodule TorobBackendWeb.CategoryController do
   end
 
   def show(conn, %{"id" => id}) do
-    category = Menu.get_category!(id)
+    category = Menu.get_category2!(id) |> IO.inspect
     render(conn, "show.json", category: category)
   end
 

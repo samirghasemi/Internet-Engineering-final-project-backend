@@ -22,6 +22,10 @@ defmodule TorobBackend.Accounts do
     Repo.all(User)
   end
 
+  def list_users2 do
+    Repo.all(User) |> Repo.preload([:shops])
+  end
+
   defp get_user_by_username(username) when is_binary(username)do
     case Repo.get_by(User, username: username) do
       nil ->
@@ -69,6 +73,7 @@ defmodule TorobBackend.Accounts do
 
   """
   def get_user!(id), do: Repo.get!(User, id)
+  def get_user2!(id), do: Repo.get!(User, id) |> Repo.preload([:shops])
   def get_user_all!(id), do: Repo.get!(User, id)
   def get_user_all(id), do: Repo.get(User, id)
 
