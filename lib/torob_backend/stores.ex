@@ -123,8 +123,9 @@ defmodule TorobBackend.Stores do
   """
 
   def list_models do
-    Repo.all(Model)
+    Repo.all(Model) |> Repo.preload([:products])
   end
+
 
 #  def custom_list_model(min_price, max_price, category_id, sub_category_id, brand_id,sort_by) do
 #    query = case category_id do

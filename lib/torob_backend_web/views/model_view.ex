@@ -36,7 +36,7 @@ defmodule TorobBackendWeb.ModelView do
       p ->
         p
     end
-
+    IO.inspect model
     %{
       id: model.id,
       name: model.name,

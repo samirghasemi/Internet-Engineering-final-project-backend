@@ -23,6 +23,7 @@ defmodule TorobBackendWeb.ModelController do
 
   def index(conn, _params) do
     models = Stores.list_models()
+
     render(conn, "index.json", models: models)
   end
 

@@ -19,17 +19,17 @@ defmodule TorobBackendWeb.Router do
     get "/users/:id", UserController, :show
     get "/users/", UserController, :index
 
-    get "/shops/:id", ModelController, :show
-    get "/shops/", ModelController, :index
+    get "/shops/:id", ShopController, :show
+    get "/shops/", ShopController, :index
 
-    get "/models/:id", ProductController, :show
-    get "/models/", ProductController, :index
+    get "/models/:id", ModelController, :show
+    get "/models/", ModelController, :index
 
-    get "/products/:id", CategoryController, :show
-    get "/products/", CategoryController, :index
+    get "/products/:id", ProductController, :show
+    get "/products/", ProductController, :index
 
-    get "/category/:id", UserController, :show
-    get "/category/", UserController, :index
+    get "/category/:id", CategoryController, :show
+    get "/category/", CategoryController, :index
 
     get "/subcategory/:id", SubcategoryController, :show
     get "/subcategory/", SubcategoryController, :index

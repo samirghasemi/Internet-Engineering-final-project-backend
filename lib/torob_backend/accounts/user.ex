@@ -7,8 +7,10 @@ defmodule TorobBackend.Accounts.User do
   schema "users" do
     field :avatar, TorobBackend.UserProfile.Type
     field :email, :string
+    field :phone, :string
     field :password, :string
     field :username, :string
+    field :name, :string
     field :is_admin, :boolean
 
     has_many :shops , TorobBackend.Stores.Shop
@@ -24,7 +26,7 @@ defmodule TorobBackend.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :password , :email, :is_admin])
+    |> cast(attrs, [:username, :password , :email, :is_admin, :phone])
     |> cast_attachments(attrs,[:avatar])
     |> validate_required([:username, :password, :email])
     |> validate_email
