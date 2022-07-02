@@ -84,7 +84,7 @@ defmodule TorobBackendWeb.ReportController do
 
   def show(conn, %{"id" => id}) do
     report = Stores.get_report!(id)
-    render(conn, "show.json", report: report)
+    render(conn, "show1.json", report: report)
   end
 
   def update(conn, %{"id" => id, "report" => report_params}) do

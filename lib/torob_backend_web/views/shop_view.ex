@@ -18,6 +18,7 @@ defmodule TorobBackendWeb.ShopView do
       name: shop.name,
       desc: shop.desc,
       link: shop.link,
+      reports: render_many(shop.reports, ReportView, "show.json"),
       avatar: TorobBackend.ShopProfile.url({shop.avatar, shop})
     }
   end

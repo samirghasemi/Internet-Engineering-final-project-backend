@@ -383,7 +383,7 @@ defmodule TorobBackend.Stores do
       ** (Ecto.NoResultsError)
 
   """
-  def get_report!(id), do: Repo.get!(Report, id)
+  def get_report!(id), do: Repo.get!(Report, id) |> Repo.preload(products: [:model])
   def get_report(id), do: Repo.get(Report, id)
 
   @doc """

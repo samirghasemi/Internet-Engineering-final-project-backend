@@ -73,7 +73,7 @@ defmodule TorobBackend.Accounts do
 
   """
   def get_user!(id), do: Repo.get!(User, id)
-  def get_user2!(id), do: Repo.get!(User, id) |> Repo.preload([:shops, :reports]) |> Repo.preload(likes: [:model]) |> Repo.preload(products: [:shop])
+  def get_user2!(id), do: Repo.get!(User, id) |> Repo.preload([:reports]) |> Repo.preload(likes: [:model]) |> Repo.preload(products: [:shop]) |> Repo.preload(shops: [:reports])
   def get_user_all!(id), do: Repo.get!(User, id)
   def get_user_all(id), do: Repo.get(User, id)
 
