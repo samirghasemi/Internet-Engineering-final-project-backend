@@ -148,17 +148,26 @@ defmodule TorobBackend.Stores do
       ** (Ecto.NoResultsError)
 
   """
+  alias TorobBackend.Stores.Product
+
+  def get_min_price_modal(id) do
+    min = List.first(Repo.all(from p in Product , where: p.model_id == ^id , select: min(p.price)))
+  end
+
+  def get_max_price_modal(id) do
+    min = List.first(Repo.all(from p in Product , where: p.model_id == ^id , select: min(p.price)))
+  end
+
   def get_model!(id), do: Repo.get!(Model, id)
   def get_model2!(id), do: Repo.get!(Model, id) |> Repo.preload([:products])
 
   def get_model3!(id) do
-#    min = Repo.all(from p in TorobBackend.Stores.Product, where p.model_id == ^id, min(p.price))
-#
-#    max = Repo.all(from p in TorobBackend.Stores.Product, where p.model_id == ^id, max(p.price))
+    min = get_min_price_modal(id)
+    max = get_max_price_modal(id)
 
-#    IO.inspect min
     model = Repo.get!(Model, id) |> Repo.preload([:products])
-
+    model = Map.put_new(model, :min_price, min)
+    model = Map.put_new(model, :max_price, max)
   end
 
   def get_model(id), do: Repo.get(Model, id)
