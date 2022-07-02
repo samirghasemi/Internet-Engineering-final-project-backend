@@ -50,7 +50,7 @@ defmodule TorobBackendWeb.ShopController do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.shop_path(conn, :show, shop))
-      |> render("show.json", shop: shop)
+      |> render("shop_created.json", shop: shop)
     end
   end
 
@@ -63,7 +63,7 @@ defmodule TorobBackendWeb.ShopController do
     shop = Stores.get_shop!(id)
 
     with {:ok, %Shop{} = shop} <- Stores.update_shop(shop, shop_params) do
-      render(conn, "show.json", shop: shop)
+      render(conn, "shop_created.json", shop: shop)
     end
   end
 

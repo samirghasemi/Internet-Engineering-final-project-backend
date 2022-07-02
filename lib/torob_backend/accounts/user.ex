@@ -26,7 +26,7 @@ defmodule TorobBackend.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :password , :email, :is_admin, :phone])
+    |> cast(attrs, [:username, :password , :email, :is_admin, :phone,:name])
     |> cast_attachments(attrs,[:avatar])
     |> validate_required([:username, :password, :email])
     |> validate_email
