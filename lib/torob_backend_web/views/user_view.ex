@@ -40,7 +40,6 @@ defmodule TorobBackendWeb.UserView do
       products: render_many(user.products, ProductView, "show.json"),
       reports: render_many(user.reports, ReportView, "show.json"),
       likes: render_many(user.likes, LikeView, "show_for_user.json")
-
     }
   end
   def render("jwt.json", %{jwt: jwt , is_admin: is_admin}) do

@@ -36,14 +36,14 @@ defmodule TorobBackendWeb.ModelController do
   end
 
   def show(conn, %{"id" => id}) do
-    model = Stores.get_model!(id)
-    render(conn, "show.json", model: model)
+    model = Stores.get_model2!(id)
+    render(conn, "model_with_product.json", model: model)
   end
 
-  def show_all(conn, %{"id" => id}) do
-    model = Stores.get_model!(id)
-    render(conn, "show.json", model: model)
-  end
+#  def show_all(conn, %{"id" => id}) do
+#    model = Stores.get_model!(id)
+#    render(conn, "show.json", model: model)
+#  end
 
   def update(conn, %{"id" => id, "model" => model_params}) do
     model = Stores.get_model!(id)
