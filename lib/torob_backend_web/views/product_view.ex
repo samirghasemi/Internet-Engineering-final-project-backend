@@ -17,7 +17,7 @@ defmodule TorobBackendWeb.ProductView do
       link: product.link,
       model_id: product.model_id,
       user_id: product.user_id,
-      shop_id: product.shop_id
+      name: product.shop.name
     }
   end
 end

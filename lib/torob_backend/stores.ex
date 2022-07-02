@@ -175,7 +175,7 @@ defmodule TorobBackend.Stores do
     min = get_min_price_modal(id)
     max = get_max_price_modal(id)
 
-    model = Repo.get!(Model, id) |> Repo.preload([:products])
+    model = Repo.get!(Model, id) |> Repo.preload(products: [:shop])
     model = Map.put_new(model, :min_price, min)
     model = Map.put_new(model, :max_price, max)
   end
