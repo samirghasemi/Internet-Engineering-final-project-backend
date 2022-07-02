@@ -152,7 +152,11 @@ defmodule TorobBackend.Stores do
   def get_model2!(id), do: Repo.get!(Model, id) |> Repo.preload([:products])
 
   def get_model3!(id) do
+#    min = Repo.all(from p in TorobBackend.Stores.Product, where p.model_id == ^id, min(p.price))
+#
+#    max = Repo.all(from p in TorobBackend.Stores.Product, where p.model_id == ^id, max(p.price))
 
+#    IO.inspect min
     model = Repo.get!(Model, id) |> Repo.preload([:products])
 
   end
