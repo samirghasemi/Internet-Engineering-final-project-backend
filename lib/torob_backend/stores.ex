@@ -262,7 +262,7 @@ defmodule TorobBackend.Stores do
 
   """
   def list_products do
-    Repo.all(Product)
+    Repo.all(Product) |> Repo.preload([:reports , :model, :shop])
   end
 
   @doc """
@@ -279,7 +279,7 @@ defmodule TorobBackend.Stores do
       ** (Ecto.NoResultsError)
 
   """
-  def get_product!(id), do: Repo.get!(Product, id)
+  def get_product!(id), do: Repo.get!(Product, id) |> Repo.preload([:reports , :model, :shop])
   def get_product(id), do: Repo.get(Product, id)
 
   @doc """

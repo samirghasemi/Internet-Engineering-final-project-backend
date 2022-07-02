@@ -70,7 +70,7 @@ defmodule TorobBackendWeb.ProductController do
 
   def index(conn, _params) do
     products = Stores.list_products()
-    render(conn, "index.json", products: products)
+    render(conn, "index1.json", products: products)
   end
 
   def create(conn, %{"product" => product_params , "model_id"=>model_id ,"shop_id"=>shop_id }) do
@@ -81,20 +81,20 @@ defmodule TorobBackendWeb.ProductController do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.product_path(conn, :show, product))
-      |> render("show.json", product: product)
+      |> render("show2.json", product: product)
     end
   end
 
   def show(conn, %{"id" => id}) do
     product = Stores.get_product!(id)
-    render(conn, "show.json", product: product)
+    render(conn, "show1.json", product: product)
   end
 
   def update(conn, %{"id" => id, "product" => product_params}) do
     product = Stores.get_product!(id)
 
     with {:ok, %Product{} = product} <- Stores.update_product(product, product_params) do
-      render(conn, "show.json", product: product)
+      render(conn, "show2.json", product: product)
     end
   end
 
