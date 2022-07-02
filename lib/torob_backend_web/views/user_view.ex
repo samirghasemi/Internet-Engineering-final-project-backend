@@ -42,10 +42,11 @@ defmodule TorobBackendWeb.UserView do
       likes: render_many(user.likes, LikeView, "show_for_user.json")
     }
   end
-  def render("jwt.json", %{jwt: jwt , is_admin: is_admin}) do
+  def render("jwt.json", %{jwt: jwt , is_admin: is_admin , id: id}) do
     %{
       jwt: jwt,
-      is_admin: is_admin
+      is_admin: is_admin,
+      id: id
     }
   end
 

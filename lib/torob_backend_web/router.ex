@@ -15,22 +15,49 @@ defmodule TorobBackendWeb.Router do
     post "/sign_in", UserController, :sign_in
     get "/log_out", UserController, :log_out
     get "/category", CategoryController, :index
+
     get "/users/:id", UserController, :show
+    get "/users/", UserController, :index
+
+    get "/shops/:id", ModelController, :show
+    get "/shops/", ModelController, :index
+
+    get "/models/:id", ProductController, :show
+    get "/models/", ProductController, :index
+
+    get "/products/:id", CategoryController, :show
+    get "/products/", CategoryController, :index
+
+    get "/category/:id", UserController, :show
+    get "/category/", UserController, :index
+
+    get "/subcategory/:id", SubcategoryController, :show
+    get "/subcategory/", SubcategoryController, :index
+
+    get "/brand/:id", BrandController, :show
+    get "/brand/", BrandController, :index
+
+    get "/report/:id", ReportController, :show
+    get "/report/", ReportController, :index
+
+    get "/like/:id", LikeController, :show
+    get "/like/", LikeController, :index
+
   end
 
   scope "/api", TorobBackendWeb do
     pipe_through [:api , :jwt_authenticated]
 #    pipe_through [:api]
 
-    resources "/users" , UserController ,except: [:new , :edit , :create,:show]
-    resources "/shops" , ShopController ,except: [:new , :edit ]
-    resources "/models" , ModelController ,except: [:new , :edit ]
-    resources "/products" , ProductController ,except: [:new , :edit ]
-    resources "/category" , CategoryController ,except: [:new , :edit, :index ]
-    resources "/subcategory" , SubcategoryController ,except: [:new , :edit ]
-    resources "/brand" , BrandController ,except: [:new , :edit ]
-    resources "/report" , ReportController ,except: [:new , :edit ]
-    resources "/like" , LikeController ,except: [:new , :edit ]
+    resources "/users" , UserController ,except: [:new , :edit , :create,:show ,:index]
+    resources "/shops" , ShopController ,except: [:new , :edit ,:show ,:index]
+    resources "/models" , ModelController ,except: [:new , :edit ,:show ,:index]
+    resources "/products" , ProductController ,except: [:new , :edit ,:show ,:index]
+    resources "/category" , CategoryController ,except: [:new , :edit, :index ,:show ]
+    resources "/subcategory" , SubcategoryController ,except: [:new , :edit ,:show ,:index]
+    resources "/brand" , BrandController ,except: [:new , :edit ,:show ,:index]
+    resources "/report" , ReportController ,except: [:new , :edit ,:show ,:index]
+    resources "/like" , LikeController ,except: [:new , :edit ,:show ,:index]
 #    resources "/reservations" , ReservationController ,except: [:new , :edit , :create ]
 #    post "/reservations/:id", ReservationController, :create
 

@@ -59,7 +59,7 @@ defmodule TorobBackendWeb.UserController do
     case Accounts.token_sign_in(username, password) do
     {{:ok , token , _claims},user} ->
         conn
-        |> render("jwt.json" , jwt: token, is_admin: user.is_admin)
+        |> render("jwt.json" , jwt: token, is_admin: user.is_admin , id: user.id)
       _ ->
         conn
         |> put_status(:unauthorized)
