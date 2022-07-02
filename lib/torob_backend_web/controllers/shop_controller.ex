@@ -56,7 +56,11 @@ defmodule TorobBackendWeb.ShopController do
 
   def show(conn, %{"id" => id}) do
     shop = Stores.get_shop!(id)
-    render(conn, "show.json", shop: shop)
+    render(conn, "
+user[password]
+Text
+1234534567Ads1@
+.json", shop: shop)
   end
 
   def update(conn, %{"id" => id, "shop" => shop_params}) do

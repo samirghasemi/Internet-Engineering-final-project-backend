@@ -18,6 +18,8 @@ defmodule TorobBackendWeb.UserView do
     %{
       id: user.id,
       username: user.username,
+      name: user.name,
+      phone: user.phone,
       email: user.email,
       avatar: TorobBackend.UserProfile.url({user.avatar, user}),
     }
@@ -34,6 +36,8 @@ defmodule TorobBackendWeb.UserView do
       id: user.id,
       username: user.username,
       email: user.email,
+      name: user.name,
+      phone: user.phone,
       avatar: TorobBackend.UserProfile.url({user.avatar, user}),
       is_admin: user.is_admin,
       shops: render_many(user.shops, ShopView, "show_for_user.json"),
