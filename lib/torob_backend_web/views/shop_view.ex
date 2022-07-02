@@ -1,6 +1,7 @@
 defmodule TorobBackendWeb.ShopView do
   use TorobBackendWeb, :view
   alias TorobBackendWeb.ShopView
+  alias TorobBackendWeb.ProductView
 
   def render("index.json", %{shops: shops}) do
     %{data: render_many(shops, ShopView, "shop_for_user.json")}
@@ -31,6 +32,7 @@ defmodule TorobBackendWeb.ShopView do
       name: shop.name,
       desc: shop.desc,
       link: shop.link,
+      products: render_many(shop.products, ProductView, "show.json"),
       avatar: TorobBackend.ShopProfile.url({shop.avatar, shop})
     }
   end

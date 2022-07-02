@@ -6,10 +6,10 @@ defmodule TorobBackendWeb.ReportController do
 
   action_fallback TorobBackendWeb.FallbackController
 
-  plug :report_exists when action in [:edit, :update, :delete, :show]
-  plug :check_user when action in [:update, :edit, :delete]
-  plug :product_exists when action in [:create]
-  plug :shop_exists when action in [:create]
+#  plug :report_exists when action in [:edit, :update, :delete, :show]
+#  plug :check_user when action in [:update, :edit, :delete]
+#  plug :product_exists when action in [:create]
+#  plug :shop_exists when action in [:create]
 
   def report_exists(%{params: %{"id" => report_id}} = conn, _) do
     report_id = String.to_integer(report_id)

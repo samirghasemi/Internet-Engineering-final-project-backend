@@ -29,6 +29,7 @@ defmodule TorobBackendWeb.UserView do
 
 
   def render("user_with_shop.json", %{user: user}) do
+    IO.inspect user
     %{
       id: user.id,
       username: user.username,

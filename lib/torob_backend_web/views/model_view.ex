@@ -3,9 +3,22 @@ defmodule TorobBackendWeb.ModelView do
   alias TorobBackendWeb.ModelView
 
   def render("index.json", %{models: models}) do
-    %{data: render_many(models, ModelView, "model.json")}
+    render_many(models, ModelView, "model_for_all.json")
   end
 
+  def render("model_for_all.json", %{model: model}) do
+    %{
+      id: model.id,
+      name: model.name,
+      desc: model.desc,
+      img: model.image,
+      category: model.category_id,
+      subcategory: model.subcategory_id,
+      brand: model.brand_id,
+      price: 1000
+      #      avatar: TorobBackend.ModelProfile.url({model.avatar, model})
+    }
+  end
   def render("show.json", %{model: model}) do
     %{data: render_one(model, ModelView, "model.json")}
   end
@@ -15,6 +28,7 @@ defmodule TorobBackendWeb.ModelView do
       id: model.id,
       name: model.name,
       desc: model.desc,
+      img: model.img,
       category: model.category_id,
       subcategory: model.subcategory_id,
       brand: model.brand_id,

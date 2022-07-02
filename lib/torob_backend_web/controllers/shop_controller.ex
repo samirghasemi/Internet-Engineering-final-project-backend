@@ -7,8 +7,8 @@ defmodule TorobBackendWeb.ShopController do
 
   action_fallback TorobBackendWeb.FallbackController
 
-  plug :exists when action in [:edit, :update, :delete, :show]
-  plug :check_user when action in [:update, :edit, :delete]
+#  plug :exists when action in [:edit, :update, :delete, :show]
+#  plug :check_user when action in [:update, :edit, :delete]
 
   def exists(%{params: %{"id" => shop_id}} = conn, _) do
     shop_id = String.to_integer(shop_id)

@@ -15,12 +15,13 @@ defmodule TorobBackendWeb.Router do
     post "/sign_in", UserController, :sign_in
     get "/log_out", UserController, :log_out
     get "/category", CategoryController, :index
+    get "/users/:id", UserController, :show
   end
 
   scope "/api", TorobBackendWeb do
     pipe_through [:api , :jwt_authenticated]
 
-    resources "/users" , UserController ,except: [:new , :edit , :create]
+    resources "/users" , UserController ,except: [:new , :edit , :create,:show]
     resources "/shops" , ShopController ,except: [:new , :edit ]
     resources "/models" , ModelController ,except: [:new , :edit ]
     resources "/products" , ProductController ,except: [:new , :edit ]

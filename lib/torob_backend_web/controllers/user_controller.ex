@@ -8,8 +8,8 @@ defmodule TorobBackendWeb.UserController do
 
   action_fallback TorobBackendWeb.FallbackController
 
-  plug :exists when action in [:edit , :update , :delete , :show]
-  plug :check_user when action in [:update , :edit , :delete , :show ]
+#  plug :exists when action in [:edit , :update , :delete , :show]
+#  plug :check_user when action in [:update , :edit , :delete , :show ]
 
   def exists(%{params: %{"id" => user_id}} = conn , _) do
     user_id = String.to_integer(user_id)

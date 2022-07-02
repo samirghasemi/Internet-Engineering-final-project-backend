@@ -40,6 +40,11 @@ defmodule TorobBackendWeb.ModelController do
     render(conn, "show.json", model: model)
   end
 
+  def show_all(conn, %{"id" => id}) do
+    model = Stores.get_model!(id)
+    render(conn, "show.json", model: model)
+  end
+
   def update(conn, %{"id" => id, "model" => model_params}) do
     model = Stores.get_model!(id)
 
@@ -57,6 +62,6 @@ defmodule TorobBackendWeb.ModelController do
   end
 #
 #  def search(conn, params)do
-#    res = Stores.
+#    res = Stores.search_like(word)
 #  end
 end

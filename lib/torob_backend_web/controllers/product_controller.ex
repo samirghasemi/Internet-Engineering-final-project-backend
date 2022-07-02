@@ -6,10 +6,10 @@ defmodule TorobBackendWeb.ProductController do
 
   action_fallback TorobBackendWeb.FallbackController
 
-  plug :product_exists when action in [:edit, :update, :delete, :show]
-  plug :check_user when action in [:update, :edit, :delete]
-  plug :model_exists when action in [:create]
-  plug :shop_exists when action in [:create]
+#  plug :product_exists when action in [:edit, :update, :delete, :show]
+#  plug :check_user when action in [:update, :edit, :delete]
+#  plug :model_exists when action in [:create]
+#  plug :shop_exists when action in [:create]
 
 
   def product_exists(%{params: %{"id" => product_id}} = conn, _) do
