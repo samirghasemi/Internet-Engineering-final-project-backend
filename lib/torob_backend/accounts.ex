@@ -173,7 +173,9 @@ defmodule TorobBackend.Accounts do
 
   """
   def get_like!(id), do: Repo.get!(Like, id)
-
+  def get_like_with_user_and_model(user_id, model_id) do
+    q = List.first(Repo.all(from l in Like , where: l.model_id == ^model_id and l.user_id == ^user_id))
+  end
   @doc """
   Creates a like.
 

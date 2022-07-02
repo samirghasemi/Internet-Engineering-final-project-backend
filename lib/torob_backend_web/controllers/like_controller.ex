@@ -16,12 +16,22 @@ defmodule TorobBackendWeb.LikeController do
   end
 
   def create(conn, %{"like" => like_params, "model_id"=> model_id}) do
-    with {:ok, %Like{} = like} <- Accounts.create_like2(like_params, load_current_user(conn),model_id) do
+    check = Accounts.get_like_with_user_and_model(load_current_user(conn).id , model_id) |> IO.inspect
+    case check do
+    nil ->
+      with {:ok, %Like{} = like} <- Accounts.create_like2(like_params, load_current_user(conn),model_id) do
+        conn
+        |> put_status(:created)
+        |> put_resp_header("location", Routes.like_path(conn, :show, like))
+        |> render("show.json", like: like)
+      end
+    c ->
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.like_path(conn, :show, like))
-      |> render("show.json", like: like)
+      |> put_resp_header("location", Routes.like_path(conn, :show, c))
+      |> render("show.json", like: c)
     end
+
   end
 
   def show(conn, %{"id" => id}) do
