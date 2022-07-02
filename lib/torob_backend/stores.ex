@@ -150,10 +150,15 @@ defmodule TorobBackend.Stores do
 
   """
   alias TorobBackend.Stores.Product
+  alias TorobBackend.Stores.Model
 
   def get_min_price_modal(id) do
     min = List.first(Repo.all(from p in Product , where: p.model_id == ^id , select: min(p.price)))
   end
+
+#  def get_models_with_like(word) do
+#     Repo.all(from m in Model , where:  ilike(m.name, "%#{^word}%")) |> Repo.preload([:products])
+#  end
 
   def get_max_price_modal(id) do
     min = List.first(Repo.all(from p in Product , where: p.model_id == ^id , select: min(p.price)))

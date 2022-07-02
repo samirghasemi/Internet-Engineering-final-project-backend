@@ -24,6 +24,7 @@ defmodule TorobBackendWeb.Router do
 
     get "/models/:id", ModelController, :show
     get "/models/", ModelController, :index
+    get "/models/:word", ModelController, :search
 
     get "/products/:id", ProductController, :show
     get "/products/", ProductController, :index

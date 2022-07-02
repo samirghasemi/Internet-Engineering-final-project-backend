@@ -36,16 +36,15 @@ defmodule TorobBackendWeb.ModelView do
       p ->
         p
     end
-    IO.inspect model
     %{
       id: model.id,
       name: model.name,
       desc: model.desc,
       img: model.image,
+      price: price,
       category: model.category_id,
       subcategory: model.subcategory_id,
       brand: model.brand_id,
-      price: price
       #      avatar: TorobBackend.ModelProfile.url({model.avatar, model})
     }
   end
@@ -54,11 +53,18 @@ defmodule TorobBackendWeb.ModelView do
   end
 
   def render("model.json", %{model: model}) do
+    price = case TorobBackend.Stores.get_min_price_modal(model.id) do
+      nil ->
+        0
+      p ->
+        p
+    end
     %{
       id: model.id,
       name: model.name,
       desc: model.desc,
       img: model.image,
+      price: price,
       category: model.category_id,
       subcategory: model.subcategory_id,
       brand: model.brand_id,
@@ -77,11 +83,19 @@ defmodule TorobBackendWeb.ModelView do
   end
 
   def render("model_for_user.json", %{model: model}) do
+    price = case TorobBackend.Stores.get_min_price_modal(model.id) do
+      nil ->
+        0
+      p ->
+        p
+    end
     %{
       id: model.id,
       name: model.name,
       desc: model.desc,
       category: model.category_id,
+      img: model.image,
+      price: price,
       subcategory: model.subcategory_id,
       brand: model.brand_id,
       meta: %{

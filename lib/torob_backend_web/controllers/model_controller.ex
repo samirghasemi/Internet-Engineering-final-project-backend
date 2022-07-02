@@ -62,7 +62,12 @@ defmodule TorobBackendWeb.ModelController do
     end
   end
 #
-#  def search(conn, params)do
-#    res = Stores.search_like(word)
-#  end
+  def search(conn, %{"word" => word})do
+    res = Stores.get_models_with_like(word)
+    render(conn, "model_with_product.json", model: res)
+  end
+
+  def query(conn, %{"word" => word})do
+    res = Stores.search_like(word)
+  end
 end
