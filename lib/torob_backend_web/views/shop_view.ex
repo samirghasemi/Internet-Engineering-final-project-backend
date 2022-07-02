@@ -15,7 +15,7 @@ defmodule TorobBackendWeb.ShopView do
   def render("shop_for_user.json", %{shop: shop}) do
     %{
       id: shop.id,
-      name: shop.name,
+#      name: shop.name,
       desc: shop.desc,
       link: shop.link,
       avatar: TorobBackend.ShopProfile.url({shop.avatar, shop})
