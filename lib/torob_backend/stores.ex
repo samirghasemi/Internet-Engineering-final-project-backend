@@ -161,7 +161,7 @@ defmodule TorobBackend.Stores do
 #  end
 
   def get_max_price_modal(id) do
-    min = List.first(Repo.all(from p in Product , where: p.model_id == ^id , select: min(p.price)))
+    min = List.first(Repo.all(from p in Product , where: p.model_id == ^id , select: max(p.price)))
   end
 
   def get_modal_with_brand(id) do
