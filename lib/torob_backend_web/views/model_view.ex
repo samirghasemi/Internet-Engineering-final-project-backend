@@ -17,12 +17,12 @@ defmodule TorobBackendWeb.ModelView do
       brand: model.brand_id,
       minPrice: model.min_price,
       maxPrice: model.max_price,
-      specification: %{
+      specification: [%{
         ram: model.ram,
         battery: model.battery,
         screen_size: model.screen_size,
         storage: model.storage
-      },
+      }],
       stores: render_many(model.products, ProductView, "show.json"),
 
       #      avatar: TorobBackend.ModelProfile.url({model.avatar, model})
@@ -68,12 +68,12 @@ defmodule TorobBackendWeb.ModelView do
       category: model.category_id,
       subcategory: model.subcategory_id,
       brand: model.brand_id,
-      meta: %{
+      specification: [%{
         ram: model.ram,
         battery: model.battery,
         screen_size: model.screen_size,
         storage: model.storage
-      }
+      }]
 #      avatar: TorobBackend.ModelProfile.url({model.avatar, model})
     }
   end
@@ -98,12 +98,12 @@ defmodule TorobBackendWeb.ModelView do
       price: price,
       subcategory: model.subcategory_id,
       brand: model.brand_id,
-      meta: %{
+      specification: [%{
         ram: model.ram,
         battery: model.battery,
         screen_size: model.screen_size,
         storage: model.storage
-      }
+      }]
       #      avatar: TorobBackend.ModelProfile.url({model.avatar, model})
     }
   end

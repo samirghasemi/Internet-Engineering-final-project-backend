@@ -164,6 +164,10 @@ defmodule TorobBackend.Stores do
     min = List.first(Repo.all(from p in Product , where: p.model_id == ^id , select: min(p.price)))
   end
 
+  def get_modal_with_brand(id) do
+    min = List.first(Repo.all(from p in Product , where: p.model_id == ^id , select: min(p.price)))
+  end
+
   def get_model!(id), do: Repo.get!(Model, id)
   def get_model2!(id), do: Repo.get!(Model, id) |> Repo.preload([:products])
 
