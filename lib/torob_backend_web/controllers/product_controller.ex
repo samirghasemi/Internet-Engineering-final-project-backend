@@ -94,23 +94,7 @@ defmodule TorobBackendWeb.ProductController do
     product = Stores.get_product!(id)
 
     with {:ok, %Product{} = product} <- Stores.update_product(product, product_params) do
-      render(conn, "show2    __meta__: #Ecto.Schema.Metadata<:loaded, "shops">,
-      avatar: nil,
-      desc: "Lorem ipsum dolor sit ame",
-      id: 3,
-      inserted_at: ~N[2022-07-02 12:53:13],
-      link: "mamadkala.com",
-      name: "ممدکالا",
-      products: #Ecto.Association.NotLoaded<association :products is not loaded>,
-      reports: #Ecto.Association.NotLoaded<association :reports is not loaded>,
-      updated_at: ~N[2022-07-02 12:53:13],
-      user: #Ecto.Association.NotLoaded<association :user is not loaded>,
-      user_id: 2
-    }
-  ],
-  updated_at: ~N[2022-07-02 01:48:54],
-  username: "abbas1"
-.json", product: product)
+      render(conn, "show2.json", product: product)
     end
   end
 
