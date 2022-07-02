@@ -35,7 +35,7 @@ defmodule TorobBackend.Stores do
       ** (Ecto.NoResultsError)
 
   """
-  def get_shop!(id), do: Repo.get!(Shop, id) |> Repo.preload([:products , :reports])
+  def get_shop!(id), do: Repo.get!(Shop, id) |> Repo.preload([:reports]) |> Repo.preload(products: [:shop,:model])
   def get_shop(id), do: Repo.get(Shop, id)
 
   @doc """
