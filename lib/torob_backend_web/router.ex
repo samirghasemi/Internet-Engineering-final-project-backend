@@ -19,8 +19,8 @@ defmodule TorobBackendWeb.Router do
   end
 
   scope "/api", TorobBackendWeb do
-#    pipe_through [:api , :jwt_authenticated]
-    pipe_through [:api]
+    pipe_through [:api , :jwt_authenticated]
+#    pipe_through [:api]
 
     resources "/users" , UserController ,except: [:new , :edit , :create,:show]
     resources "/shops" , ShopController ,except: [:new , :edit ]

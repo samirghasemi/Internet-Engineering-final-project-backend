@@ -35,7 +35,7 @@ defmodule TorobBackend.Stores do
       ** (Ecto.NoResultsError)
 
   """
-  def get_shop!(id), do: Repo.get!(Shop, id) |> Repo.preload([:products])
+  def get_shop!(id), do: Repo.get!(Shop, id) |> Repo.preload([:products , :reports])
   def get_shop(id), do: Repo.get(Shop, id)
 
   @doc """
@@ -395,8 +395,9 @@ defmodule TorobBackend.Stores do
   end
 
   def create_report2(attrs \\ %{}, maybe_user,product_id,shop_id) do
+    IO.inspect maybe_user
     maybe_user
-    |> Ecto.build_assoc(:reports , product_id: product_id ,shop_id: shop_id)
+    |> Ecto.build_assoc(:reports , product_id: String.to_integer(product_id) ,shop_id: String.to_integer(shop_id))
     |> Report.changeset(attrs)
     |> Repo.insert()
   end

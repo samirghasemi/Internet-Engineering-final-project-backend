@@ -14,7 +14,10 @@ defmodule TorobBackendWeb.ReportView do
     %{
       id: report.id,
       message: report.message,
-      desc: report.desc
+      desc: report.desc,
+      user_id: report.user_id,
+      shop_id: report.shop_id,
+      product_id: report.product_id
     }
   end
 end

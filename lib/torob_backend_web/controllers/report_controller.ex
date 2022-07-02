@@ -73,8 +73,8 @@ defmodule TorobBackendWeb.ReportController do
     render(conn, "index.json", reports: reports)
   end
 
-  def create(conn, %{"report" => report_params}) do
-    with {:ok, %Report{} = report} <- Stores.create_report(report_params) do
+  def create(conn, %{"report" => report_params, "product_id"=>product_id, "shop_id"=>shop_id}) do
+    with {:ok, %Report{} = report} <- Stores.create_report2(report_params ,load_current_user(conn), product_id, shop_id) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.report_path(conn, :show, report))
