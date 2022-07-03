@@ -1,0 +1,1795 @@
+{
+	"info": {
+		"_postman_id": "f13add63-e430-4598-b6ce-976618522c50",
+		"name": "Torob",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17120420"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "sign_up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\":{\r\n        \"username\" : \"abbas1\",\r\n        \"password\" : \"A1234abbas@\",\r\n        \"email\" : \"samirghasemi1@outlook.com\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sign_up",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign_up Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user[username]",
+									"value": "sam",
+									"type": "text"
+								},
+								{
+									"key": "user[password]",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "user[email]",
+									"value": "samirghasemi2@outlook.com",
+									"type": "text"
+								},
+								{
+									"key": "user[avatar]",
+									"type": "file",
+									"src": "/C:/Users/samir/Desktop/avatar2.png",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/sign_up",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign_in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"abbas1\",\r\n    \"password\" : \"1234534567Ads1@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sign_in",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign_in Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/log_out",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"log_out"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "need_auth",
+			"item": [
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/users",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/users/5",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[avatar]",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "user[username]",
+											"value": "abbas1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "user[password]",
+											"value": "1234534567Ads1",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "samirghasemi@outlook.com3",
+											"type": "text"
+										},
+										{
+											"key": "user[phone]",
+											"value": "09910222731",
+											"type": "text"
+										},
+										{
+											"key": "user[name]",
+											"value": "abbbas",
+											"type": "text"
+										},
+										{
+											"key": "user[name]",
+											"value": "abbbas",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/users/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "shop",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/shops",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"shops"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/shops/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"shops",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/shops/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"shops",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/p1.jpg"
+										},
+										{
+											"key": "user[username]",
+											"value": "samir1",
+											"type": "text"
+										},
+										{
+											"key": "user[password]",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "samirghasemi@outlook.com1",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/users/10",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "shop[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/avatar2.png",
+											"disabled": true
+										},
+										{
+											"key": "shop[name]",
+											"value": "ممدکالا2",
+											"type": "text"
+										},
+										{
+											"key": "shop[desc]",
+											"value": "Lorem ipsum dolor sit ame",
+											"type": "text"
+										},
+										{
+											"key": "shop[link]",
+											"value": "mamadkala.com",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/shops",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"shops"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "model",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/models",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"models"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/models/16",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"models",
+										"16"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/models/42",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"models",
+										"42"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/p1.jpg"
+										},
+										{
+											"key": "user[username]",
+											"value": "samir1",
+											"type": "text"
+										},
+										{
+											"key": "user[password]",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "samirghasemi@outlook.com1",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/models/10",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"models",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "model[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/avatar2.png",
+											"disabled": true
+										},
+										{
+											"key": "model[name]",
+											"value": "لپ تاپ لنوو V15-OE | 16GB RAM | 1TB HDD | 256GB SSD | i5 | 2GB VGA ا Levnovo V15 OE",
+											"type": "text"
+										},
+										{
+											"key": "model[desc]",
+											"value": "Lorem ipsum dolor sit ame",
+											"type": "text"
+										},
+										{
+											"key": "model[battery]",
+											"value": "lorem",
+											"type": "text"
+										},
+										{
+											"key": "model[ram]",
+											"value": "lorem",
+											"type": "text"
+										},
+										{
+											"key": "model[screen_size]",
+											"value": "lorem",
+											"type": "text"
+										},
+										{
+											"key": "model[storage]",
+											"value": "lorem",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "subcategory_id",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "8",
+											"type": "text"
+										},
+										{
+											"key": "model[image]",
+											"value": "https://storage.torob.com/backend-api/base/images/J7/UQ/J7UQzxmW01Jl5s56.png_/0x145.jpg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/models",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"models"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/products",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/products/4",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/products/5",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/p1.jpg"
+										},
+										{
+											"key": "user[username]",
+											"value": "samir1",
+											"type": "text"
+										},
+										{
+											"key": "user[password]",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "samirghasemi@outlook.com1",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/products/10",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "shop[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/p1.jpg",
+											"disabled": true
+										},
+										{
+											"key": "product[price]",
+											"value": "5000000",
+											"type": "text"
+										},
+										{
+											"key": "product[link]",
+											"value": "https://www.apple.com/iphone-12/",
+											"type": "text"
+										},
+										{
+											"key": "model_id",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "shop_id",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/products",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "report",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/report",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"report"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/report/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"report",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/report/5",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"report",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/p1.jpg"
+										},
+										{
+											"key": "user[username]",
+											"value": "samir1",
+											"type": "text"
+										},
+										{
+											"key": "user[password]",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "samirghasemi@outlook.com1",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/report/10",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"report",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\n{\"report\":{\"message\":\"این کالا مربوط به این صفحه نیست\",\"desc\":\"sasdasdasdasd\"},\"product_id\":\"19\",\"shop_id\":\"2\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/report",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"report"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "like",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/like",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"like"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/like/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"like",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/like/50",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"like",
+										"50"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/p1.jpg"
+										},
+										{
+											"key": "user[username]",
+											"value": "samir1",
+											"type": "text"
+										},
+										{
+											"key": "user[password]",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "samirghasemi@outlook.com1",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/like/10",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"like",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"like\":{\n        \"is_like\": true\n    },\n    \"model_id\": \"20\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/like",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"like"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/category/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/5",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/p1.jpg"
+										},
+										{
+											"key": "user[username]",
+											"value": "samir1",
+											"type": "text"
+										},
+										{
+											"key": "user[password]",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "samirghasemi@outlook.com1",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/category/10",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"category\":{\n        \"title\" : \"لپ تاپ\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/category",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "subcategory",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/subcategory",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subcategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/subcategory/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subcategory",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/subcategory/3",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subcategory",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[avatar]",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/p1.jpg"
+										},
+										{
+											"key": "user[username]",
+											"value": "samir1",
+											"type": "text"
+										},
+										{
+											"key": "user[password]",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "user[email]",
+											"value": "samirghasemi@outlook.com1",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/subcategory/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subcategory",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"subcategory\":{\n        \"title\" : \"لپ تاپ\"\n    },\n    \"category_id\" : 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/subcategory",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subcategory"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "subcategorybrand",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/brand",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"brand"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/brand/6",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"brand",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/brand/5",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"brand",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\":{\n        \"title\" : \"لنوو\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/brand/8",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"brand",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\":{\n        \"title\" : \"اپل\"\n    },\n    \"subcategory_id\" : 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/brand",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"brand"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0ZXN0IiwiZXhwIjoxNjU5MTQ1NzUwLCJpYXQiOjE2NTY3MjY1NTAsImlzcyI6InRlc3QiLCJqdGkiOiIyNWNjMDlkNy1lZTU4LTRiODQtYTIxNy0zODM5YzZjNWMxOWQiLCJuYmYiOjE2NTY3MjY1NDksInN1YiI6IjIiLCJ0eXAiOiJhY2Nlc3MifQ.EOUuRUkB6JOxYpjuLeIGDfHcPXDn47VJnqAgvVA8-IBEMzHbeEinIF7_DEier3kMwpuXv8dyIUqqIssTB41ucQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{mytoken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "mytoken",
+			"value": ""
+		},
+		{
+			"key": "host",
+			"value": "http://localhost:4000/api"
+		},
+		{
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"value": "http://193.141.126.85:4000/api",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
